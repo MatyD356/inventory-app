@@ -4,7 +4,7 @@ var Schema = mongoose.Schema
 
 var ProducerSchema = new Schema({
   name: { type: String, required: true, maxlength: 100 },
-  desc: { type: String, required: true, maxlength: 300 }
+  desc: { type: String, required: true, maxlength: 500 }
 })
 
 //Virtual prop for producer's URL

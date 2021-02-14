@@ -4,7 +4,7 @@ var Schema = mongoose.Schema
 
 var GuitarSchema = new Schema({
   name: { type: String, required: true, maxlength: 100 },
-  desc: { type: String, required: true, maxlength: 200 },
+  desc: { type: String, required: true, maxlength: 700 },
   price: { type: Number, required: true },
   inStock: { type: Number, required: true },
   category: { type: Schema.Types.ObjectId, ref: 'Category', required: true },
