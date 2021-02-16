@@ -3,5 +3,22 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    meta( name='viewport' content='width=device-width, initial-scale=1, minimum-scale=1')
   body
-    block content
+    div(class='grid grid-rows-2 md:grid-rows-1 md:grid-cols-4 xl:grid-cols-6 md:h-screen')
+      aside(class='bg-gradient-to-l from-red-500 to-red-600 h-screen shadow-lg md:overflow-auto')
+        h1(class='text-red-50') Inventory App
+        nav
+          ul
+            li
+              h1(class='text-red-50') Lists
+            li
+              a(href='/inventory/guitars') Guitars
+            li  
+              a(href='/inventory/categories') Categories
+            li
+              a(href='/inventory/producers') Producers
+            li
+              h1(class='text-red-50') Add
+      section(class='md:col-span-3 xl:col-span-5 bg-gray-100 md:h-screen md:overflow-auto')
+        block content
