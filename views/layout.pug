@@ -5,20 +5,32 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     meta( name='viewport' content='width=device-width, initial-scale=1, minimum-scale=1')
   body
-    div(class='grid grid-rows-2 md:grid-rows-1 md:grid-cols-4 xl:grid-cols-6 md:h-screen')
-      aside(class='bg-gradient-to-l from-red-500 to-red-600 h-screen shadow-lg md:overflow-auto')
-        h1(class='text-red-50') Inventory App
+    div(class='grid grid-rows-2 md:grid-rows-1 md:grid-cols-4 xl:grid-cols-6 md:h-screen text-red-50 font-mono')
+      aside(class='bg-gradient-to-l from-red-500 to-red-600 h-screen md:overflow-auto p-4' )
+        h1(class='text-4xl text-red-900') 
+          a(href='/inventory/') Inventory App
         nav
+          h1(class='text-2xl ') Lists
+          ul(class='text-1xl')
+            li
+              a(href='/inventory/guitars' 
+                class='my-2 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:bg-red-50 hover:text-red-900 hover:p-4 transform duration-500 hover:translate-x-6') Guitars
+            li
+              a(href='/inventory/categories' 
+                class='my-2 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:bg-red-50 hover:text-red-900 hover:p-4 transform duration-500 hover:translate-x-6') Categories
+            li
+              a(href='/inventory/producers' 
+                class='my-2 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:bg-red-50 hover:text-red-900 hover:p-4 transform duration-500 hover:translate-x-6') Producers  
+          h1(class='text-2xl') Add
           ul
             li
-              h1(class='text-red-50') Lists
+              a(href='/inventory/guitars/add'
+                class='my-2 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:bg-red-50 hover:text-red-900 hover:p-4 transform duration-500 hover:translate-x-6') New guitar 
             li
-              a(href='/inventory/guitars') Guitars
-            li  
-              a(href='/inventory/categories') Categories
+              a(href='/inventory/category/add'
+                class='my-2 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:bg-red-50 hover:text-red-900 hover:p-4 transform duration-500 hover:translate-x-6') New category 
             li
-              a(href='/inventory/producers') Producers
-            li
-              h1(class='text-red-50') Add
-      section(class='md:col-span-3 xl:col-span-5 bg-gray-100 md:h-screen md:overflow-auto')
+              a(href='/inventory/guitars/add'
+                class='my-2 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:bg-red-50 hover:text-red-900 hover:p-4 transform duration-500 hover:translate-x-6') New producer 
+      section(class='md:col-span-3 xl:col-span-5 bg-red-50 md:h-screen md:overflow-auto text-red-500')
         block content
