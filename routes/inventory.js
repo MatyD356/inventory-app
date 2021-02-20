@@ -7,9 +7,13 @@ var producers_controller = require('../controller/producersController')
 
 router.get('/', guitar_controller.index);
 
+//guitars routes
 router.get('/guitars', guitar_controller.guitars);
+router.get('/guitars/add', guitar_controller.guitar_create_get);
 
+//categories routes
 router.get('/categories', categories_controller.categories);
+
 
 router.get('/producers', producers_controller.producers);
 

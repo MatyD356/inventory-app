@@ -1,8 +1,24 @@
 var Guitar = require('../models/Guitar')
+var Category = require('../models/Category')
+var Producer = require('../models/Producer')
+
+var async = require('async')
 
 //display home page
 exports.index = function (req, res) {
-  res.render('index', { title: 'Inventory App' });
+  async.parallel({
+    guitars_count: function (callback) {
+      Guitar.countDocuments({}, callback)
+    },
+    categories_count: function (callback) {
+      Category.countDocuments({}, callback)
+    },
+    producers_count: function (callback) {
+      Producer.countDocuments({}, callback)
+    }
+  }, function (err, results) {
+    res.render('index', { title: 'Inventory App', err, results });
+  })
 };
 
 //display list of all guitars

@@ -2,3 +2,12 @@ extends layout
 
 block content
   h2 Inventory
+  if error
+    p Error getting dynamic content.
+  else
+    p The Inventory has the following record counts:
+
+    ul
+      li #[strong Guitars:] !{results.guitars_count}
+      li #[strong Categories:] !{results.categories_count}
+      li #[strong Producers:] !{results.producers_count}
