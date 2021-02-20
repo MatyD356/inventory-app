@@ -104,31 +104,31 @@ function createProducersCategories(cb) {
 function createGuitars(cb) {
   async.parallel([
     function (callback) {
-      guitarCreate('Fender CP-60S Parlor', `The Classic Design series CP-60S acoustic guitar's parlor body style ensures a comfortable playing experience, thanks to its smaller size. It also sings with a distinctly warm and intimate voice traditionally embraced by folk and blues players, making this model an ideal choice for the up-and-coming fingerstyle player.The Classic Design series CP-60S acoustic guitar's parlor body style ensures a comfortable playing experience, thanks to its smaller size. It also sings with a distinctly warm and intimate voice traditionally embraced by folk and blues players, making this model an ideal choice for the up-and-coming fingerstyle player.`, 219.99, 5, categories[0], producers[2], callback)
+      guitarCreate('CP-60S Parlor', `The Classic Design series CP-60S acoustic guitar's parlor body style ensures a comfortable playing experience, thanks to its smaller size. It also sings with a distinctly warm and intimate voice traditionally embraced by folk and blues players, making this model an ideal choice for the up-and-coming fingerstyle player.The Classic Design series CP-60S acoustic guitar's parlor body style ensures a comfortable playing experience, thanks to its smaller size. It also sings with a distinctly warm and intimate voice traditionally embraced by folk and blues players, making this model an ideal choice for the up-and-coming fingerstyle player.`, 219.99, 5, categories[0], producers[2], callback)
     },
     function (callback) {
-      guitarCreate('Gibson 1952 J-185', 'The Gibson J-185 was originally released in 1951 and remains one of the most legendary Gibsons of all time. Crafted to be just slightly smaller in size to its larger cousin, the SJ-200, the Gibson J-185 used similar appointments, including Sitka spruce and maple back and sides for its construction.', 4999, 1, categories[2], producers[1], callback)
+      guitarCreate('1952 J-185', 'The Gibson J-185 was originally released in 1951 and remains one of the most legendary Gibsons of all time. Crafted to be just slightly smaller in size to its larger cousin, the SJ-200, the Gibson J-185 used similar appointments, including Sitka spruce and maple back and sides for its construction.', 4999, 1, categories[2], producers[1], callback)
     },
     function (callback) {
-      guitarCreate('Yamaha FS800 Folk', `The FS800 Folk is Yamaha's standard acoustic model, with simple and traditional looks and outstanding quality, at an affordable price. A solid-top guitar with authentic sound that is well-balanced without sacrificing its robust strength, thanks to the newly developed scalloped bracing design.`, 199.99, 10, categories[2], producers[2], callback)
+      guitarCreate('FS800 Folk', `The FS800 Folk is Yamaha's standard acoustic model, with simple and traditional looks and outstanding quality, at an affordable price. A solid-top guitar with authentic sound that is well-balanced without sacrificing its robust strength, thanks to the newly developed scalloped bracing design.`, 199.99, 10, categories[2], producers[2], callback)
     },
     function (callback) {
-      guitarCreate('Epiphone Les Paul Special-I', `This is a limited-edition version of Epiphone's number-one-selling model is now available with a choice of "worn" finishes. The Epiphone Les Paul Special-I limited-edition electric guitar is a great way for beginners to get started on guitar with real Les Paul tone and feel`, 129.99, 3, categories[0], producers[3], callback)
+      guitarCreate('Les Paul Special-I', `This is a limited-edition version of Epiphone's number-one-selling model is now available with a choice of "worn" finishes. The Epiphone Les Paul Special-I limited-edition electric guitar is a great way for beginners to get started on guitar with real Les Paul tone and feel`, 129.99, 3, categories[0], producers[3], callback)
     },
     function (callback) {
-      guitarCreate('Gibson Les Paul Studio', `The Les Paul Studio embodies the essential Les Paul features with enhancements for playability and tonal versatility. The rosewood fingerboard and slim taper mahogany neck provide effortless playability and comfort.`, 1499, 0, categories[0], producers[1], callback)
+      guitarCreate('Les Paul Studio', `The Les Paul Studio embodies the essential Les Paul features with enhancements for playability and tonal versatility. The rosewood fingerboard and slim taper mahogany neck provide effortless playability and comfort.`, 1499, 0, categories[0], producers[1], callback)
     },
     function (callback) {
-      guitarCreate('Fender Player Stratocaster', `Over the decades, players have been continually inspired by the sound of a Strat. From the clarity of the high end, through the gut punch of the mids and the solid lows, it's a sound that's helped define what an electric guitar should be—versatile enough for any style and broad enough for any player to find an individual voice.`, 749.99, 3, categories[0], producers[0], callback)
+      guitarCreate('Player Stratocaster', `Over the decades, players have been continually inspired by the sound of a Strat. From the clarity of the high end, through the gut punch of the mids and the solid lows, it's a sound that's helped define what an electric guitar should be—versatile enough for any style and broad enough for any player to find an individual voice.`, 749.99, 3, categories[0], producers[0], callback)
     },
     function (callback) {
-      guitarCreate('Fender Special Edition Deluxe PJ', `We've teamed up with Fender to bring you another great-sounding, unique one-off bass loaded with premium features. The exclusive Deluxe PJ Bass has a Precision Bass body with the neck of a '70s Jazz Bass.`, 799.99, 2, categories[1], producers[0], callback)
+      guitarCreate('Special Edition Deluxe PJ', `We've teamed up with Fender to bring you another great-sounding, unique one-off bass loaded with premium features. The exclusive Deluxe PJ Bass has a Precision Bass body with the neck of a '70s Jazz Bass.`, 799.99, 2, categories[1], producers[0], callback)
     },
     function (callback) {
-      guitarCreate('Yamaha TRBX174EW', `The TRBX174EW represents a price breakthrough for the TRBX range with exotic mango wood.You're the bedrock of your music. You need an instrument with the strength and power to perform.`, 249.99, 1, categories[1], producers[2], callback)
+      guitarCreate('TRBX174EW', `The TRBX174EW represents a price breakthrough for the TRBX range with exotic mango wood.You're the bedrock of your music. You need an instrument with the strength and power to perform.`, 249.99, 1, categories[1], producers[2], callback)
     },
     function (callback) {
-      guitarCreate('Gibson Les Paul Junior Tribute DC Bass', `The Les Paul Junior Tribute DC Bass is a tribute to the historic Gibson EB-0 bass from the late '50s, but with modern features. Not just for smaller players, the short scale length is actually chosen by many for its strong fundamental tone and sits perfectly in a track when recording.`, 999, 1, categories[1], producers[1], callback)
+      guitarCreate('Les Paul Junior Tribute DC Bass', `The Les Paul Junior Tribute DC Bass is a tribute to the historic Gibson EB-0 bass from the late '50s, but with modern features. Not just for smaller players, the short scale length is actually chosen by many for its strong fundamental tone and sits perfectly in a track when recording.`, 999, 1, categories[1], producers[1], callback)
     },
   ],
     // optional callback

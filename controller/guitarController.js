@@ -22,9 +22,16 @@ exports.index = function (req, res) {
 };
 
 //display list of all guitars
-exports.guitars = function (req, res) {
-  res.render('guitars', { title: 'Guitars' })
+exports.guitars = function (req, res, next) {
+  Guitar.find({}, 'name')
+    .populate('producer')
+    .populate('category')
+    .exec(function (err, list_guitars) {
+      if (err) { return next(err) }
+      res.render('guitars', { title: 'Guitars', guitar_list: list_guitars })
+    })
 }
+
 //display detail info for a specific guitar
 exports.guitar_details = function (req, res) {
   res.render('guitar_details', { title: 'Guitar details' })

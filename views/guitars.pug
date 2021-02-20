@@ -1,4 +1,12 @@
 extends layout
 
 block content
-  h2 Guitars
+  h2(class='text-4xl text-red-900') Guitars
+
+  ul 
+    each guitar in guitar_list
+      li(class='bg-red-100 my-4 shadow-lg p-2 rounded-md hover:bg-white transform duration-200')
+       p(class='text-red-900') #{guitar.producer.name} #{guitar.name}
+       p #{guitar.category.name}
+    else
+      li There are no guitars.
