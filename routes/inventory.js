@@ -9,8 +9,8 @@ router.get('/', guitar_controller.index);
 
 //guitars routes
 router.get('/guitars', guitar_controller.guitars);
-router.get('/guitars/:id', guitar_controller.guitar_details);
 router.get('/guitars/add', guitar_controller.guitar_create_get);
+router.get('/guitars/:id', guitar_controller.guitar_details);
 
 
 //categories routes

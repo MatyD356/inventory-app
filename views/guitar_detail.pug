@@ -1,17 +1,20 @@
 extends layout
 
 block content
-  div(class='mx-8 shadow-2xl rounded-md')
+  div(class='mx-8 shadow-2xl rounded-md p-4 bg-white')
     div(class='flex')
-      div(class='w-2/3 h-96 border-2 border-red-600 m-4 mb-0')
+      div(class='w-2/3 h-72 border-2 border-red-600 m-4 mb-0')
       div(class='w-full m-4 mb-0 border-b-2 border-red-600')
         h2(class='text-2xl text-red-900') #{guitar_detail.producer.name} #{guitar_detail.name}
-        p(class='text-xl') price: #{guitar_detail.price}
-        p(class='text-xl') inStock: #{guitar_detail.inStock}
-        p(class='text-xl') category: 
-          a(href=guitar_detail.category.url) #{guitar_detail.category.name}
-        p(class='text-xl') producer: 
-          a(href=guitar_detail.producer.url) #{guitar_detail.producer.name}
+        p(class='text-xl my-2') Price: #{guitar_detail.price}$
+        p(class='text-xl my-2') InStock: #{guitar_detail.inStock}
+        p(class='text-xl my-2') Category: 
+          a(href=guitar_detail.category.url class='underline') #{guitar_detail.category.name}
+        p(class='text-xl my-2') Producer: 
+          a(href=guitar_detail.producer.url class='underline') #{guitar_detail.producer.name}
+        div
+          a(href='#' class='m-4 ml-0 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:text-red-50 hover:bg-red-500 transform duration-200') UPDATE
+          a(href='#' class='m-4 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:text-red-50 hover:bg-red-500 transform duration-200') DELETE 
     div(class='p-4')
         h2(class='text-2xl text-red-900') Description: 
         p(class='text-lg text-red-600') #{guitar_detail.desc}
