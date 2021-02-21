@@ -12,6 +12,8 @@ var GuitarSchema = new Schema({
 })
 
 //Virtual prop for guitar's URL
-GuitarSchema.virtual('url').get(() => '/guitar/' + this._id)
+GuitarSchema.virtual('url').get(function () {
+  return '/guitars/' + this._id
+})
 
 module.exports = mongoose.model('Guitar', GuitarSchema)

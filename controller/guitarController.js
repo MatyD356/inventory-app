@@ -23,7 +23,7 @@ exports.index = function (req, res) {
 
 //display list of all guitars
 exports.guitars = function (req, res, next) {
-  Guitar.find({}, 'name')
+  Guitar.find({})
     .populate('producer')
     .populate('category')
     .exec(function (err, list_guitars) {
