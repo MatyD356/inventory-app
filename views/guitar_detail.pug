@@ -1,4 +1,14 @@
 extends layout
 
 block content
-  h2 Guitar details
+  div
+    h2 #{guitar_detail.producer.name} #{guitar_detail.name}
+    p price: #{guitar_detail.price}
+    p inStock: #{guitar_detail.inStock}
+    p category: 
+      a(href=guitar_detail.category.url) #{guitar_detail.category.name}
+    p producer: 
+      a(href=guitar_detail.producer.url) #{guitar_detail.producer.name}
+    p description: #{guitar_detail.desc}
+
+

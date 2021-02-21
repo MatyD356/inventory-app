@@ -8,6 +8,8 @@ var ProducerSchema = new Schema({
 })
 
 //Virtual prop for producer's URL
-ProducerSchema.virtual('url').get(() => '/producer/' + this._id)
+ProducerSchema.virtual('url').get(function () {
+  return '/inventory/producers/' + this._id
+})
 
 module.exports = mongoose.model('Producer', ProducerSchema)

@@ -33,8 +33,15 @@ exports.guitars = function (req, res, next) {
 }
 
 //display detail info for a specific guitar
-exports.guitar_details = function (req, res) {
-  res.render('guitar_details', { title: 'Guitar details' })
+exports.guitar_details = function (req, res, next) {
+  Guitar.findById(req.params.id)
+    .populate('producer')
+    .populate('category')
+    .exec(function (err, guitar_detail) {
+      if (err) { return next(err) }
+      console.log(guitar_detail.producer.url)
+      res.render('guitar_detail', { title: 'Guitar details', guitar_detail: guitar_detail })
+    })
 }
 //display form to create new guitar on GET
 exports.guitar_create_get = function (req, res) {
