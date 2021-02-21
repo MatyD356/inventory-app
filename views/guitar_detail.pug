@@ -1,14 +1,19 @@
 extends layout
 
 block content
-  div
-    h2 #{guitar_detail.producer.name} #{guitar_detail.name}
-    p price: #{guitar_detail.price}
-    p inStock: #{guitar_detail.inStock}
-    p category: 
-      a(href=guitar_detail.category.url) #{guitar_detail.category.name}
-    p producer: 
-      a(href=guitar_detail.producer.url) #{guitar_detail.producer.name}
-    p description: #{guitar_detail.desc}
+  div(class='mx-8 shadow-2xl rounded-md')
+    div(class='flex')
+      div(class='w-2/3 h-96 border-2 border-red-600 m-4 mb-0')
+      div(class='w-full m-4 mb-0 border-b-2 border-red-600')
+        h2(class='text-2xl text-red-900') #{guitar_detail.producer.name} #{guitar_detail.name}
+        p(class='text-xl') price: #{guitar_detail.price}
+        p(class='text-xl') inStock: #{guitar_detail.inStock}
+        p(class='text-xl') category: 
+          a(href=guitar_detail.category.url) #{guitar_detail.category.name}
+        p(class='text-xl') producer: 
+          a(href=guitar_detail.producer.url) #{guitar_detail.producer.name}
+    div(class='p-4')
+        h2(class='text-2xl text-red-900') Description: 
+        p(class='text-lg text-red-600') #{guitar_detail.desc}
 
 
