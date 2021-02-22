@@ -15,6 +15,7 @@ router.get('/guitars/:id', guitar_controller.guitar_details);
 
 //categories routes
 router.get('/categories', categories_controller.categories);
+router.get('/categories/:id', categories_controller.category_details);
 
 
 router.get('/producers', producers_controller.producers);

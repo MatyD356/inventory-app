@@ -39,7 +39,6 @@ exports.guitar_details = function (req, res, next) {
     .populate('category')
     .exec(function (err, guitar_detail) {
       if (err) { return next(err) }
-      console.log(guitar_detail.producer.url)
       res.render('guitar_detail', { title: 'Guitar details', guitar_detail: guitar_detail })
     })
 }
