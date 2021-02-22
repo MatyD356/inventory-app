@@ -2,3 +2,22 @@ extends layout
 
 block content
   h2 Add Guitar
+  form(method='POST' action='')
+    div
+      label(for='name')
+      input#name(type='text', placeholder='Name of guitar' name='name' required='true' value=(undefined===guitar ? '' : guitar.name))
+    div 
+      label(for='desc')
+      input#desc(type='textarea', placeholder='description of guitar' name='desc' required='true' value=(undefined===guitar ? '' : guitar.desc))
+    div 
+      label(for='price')
+      input#price(type='text', placeholder='guitar price' name='price' required='true' value=(undefined===guitar ? '' : guitar.price))
+    div
+      label(for='inStock')
+      input#inStock(type='text' placeholder='inStock number' name='inStock' required='true' value=(undefined===guitar ? '': guitar.inStock))
+      div.form-group
+    div
+      select#category(type='select' placeholder='Select category' name='category' required='true')
+        for category in data.categories
+          option(value=category.name selected=(guitar ? category.name === guitar.category ? 'selected' : false : null)) #{category.name}
+    button.btn.btn-primary(type='submit') Submit

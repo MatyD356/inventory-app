@@ -43,8 +43,18 @@ exports.guitar_details = function (req, res, next) {
     })
 }
 //display form to create new guitar on GET
-exports.guitar_create_get = function (req, res) {
-  res.render('guitar_add', { title: 'Guitar Add' })
+exports.guitar_create_get = function (req, res, next) {
+  async.parallel({
+    producers: function (callback) {
+      Producer.find(callback)
+    },
+    categories: function (callback) {
+      Category.find(callback)
+    }
+  }, function (err, results) {
+    if (err) { return next(err) }
+    res.render('guitar_add', { title: 'Guitar Add', data: results })
+  })
 }
 //handle new guitar create on POST
 exports.guitar_create_post = function (req, res) {
