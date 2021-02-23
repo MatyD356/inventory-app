@@ -2,6 +2,7 @@ var Guitar = require('../models/Guitar')
 var Category = require('../models/Category')
 var Producer = require('../models/Producer')
 
+const { body, validationResult } = require('express-validator');
 var async = require('async')
 
 //display home page
@@ -57,6 +58,46 @@ exports.guitar_create_get = function (req, res, next) {
   })
 }
 //handle new guitar create on POST
-exports.guitar_create_post = function (req, res) {
-  res.render('guitar_add', { title: 'Guitar Add' })
-}
+exports.guitar_create_post = [
+  // Validate and sanitise fields.
+  body('name', 'Name must not be empty.').trim().isLength({ min: 1 }).escape(),
+  body('desc', 'Description must not be empty.').trim().isLength({ min: 1 }).escape(),
+  body('price', 'Price must not be empty.').trim().isLength({ min: 1 }).escape().toInt(),
+  body('inStock', 'inStock must not be empty.').trim().isLength({ min: 1 }).escape().toInt(),
+  body('category', 'category must not be empty.').escape(),
+  body('producer', 'producer must not be empty.').escape(),
+  // Process request after validation and sanitization.
+  (req, res, next) => {
+
+    // Extract the validation errors from a request.
+    const errors = validationResult(req);
+
+    var guitar = new Guitar({
+      name: req.body.name,
+      desc: req.body.desc,
+      price: req.body.price,
+      inStock: req.body.inStock,
+      category: req.body.category,
+      producer: req.body.producer
+    })
+    if (!errors.isEmpty()) {
+      async.parallel({
+        producers: function (callback) {
+          Producer.find(callback)
+        },
+        categories: function (callback) {
+          Category.find(callback)
+        }
+      }, function (err, results) {
+        if (err) { return next(err) }
+        res.render('guitar_add', { title: 'Guitar Add', data: results, errors: errors.array() })
+      })
+      return;
+    } else {
+      guitar.save(function (err) {
+        if (err) { return next(err) }
+        res.redirect(guitar.url)
+      })
+    }
+  }
+]
