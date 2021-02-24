@@ -90,7 +90,8 @@ exports.guitar_create_post = [
         }
       }, function (err, results) {
         if (err) { return next(err) }
-        res.render('guitar_add', { title: 'Guitar Add', data: results, errors: errors.array() })
+        console.log(errors.array());
+        res.render('guitar_add', { title: 'Guitar Add', data: results, errors: errors.array(), guitar: guitar })
       })
       return;
     } else {

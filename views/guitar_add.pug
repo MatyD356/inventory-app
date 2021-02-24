@@ -1,31 +1,39 @@
 extends layout
 
 block content
-  h2 Add Guitar
   form(method='POST' action='')
     div
       label(for='name') Name:
       input#name(type='text', placeholder='Name of guitar' name='name' value=(undefined===guitar ? '' : guitar.name))
     div 
       label(for='desc') Description:
-      input#desc(type='textarea', placeholder='description of guitar' name='desc' required='true' value=(undefined===guitar ? '' : guitar.desc))
+      input#desc(type='textarea', placeholder='description of guitar' name='desc' value=(undefined===guitar ? '' : guitar.desc))
     div 
       label(for='price') Price:
-      input#price(type='number', placeholder='guitar price' name='price' required='true' value=(undefined===guitar ? '' : guitar.price))
+      input#price(type='number', placeholder='guitar price' name='price' value=(undefined===guitar ? '' : guitar.price))
     div
       label(for='inStock') inStock:
-      input#inStock(type='number' placeholder='inStock number' name='inStock' required='true' value=(undefined===guitar ? '': guitar.inStock))
+      input#inStock(type='number' placeholder='inStock number' name='inStock'  value=(undefined===guitar ? '': guitar.inStock))
       div.form-group
     div
       label(for='category') Category:
-      select#category(type='select' placeholder='Select category' name='category' required='true')
+      select#category(type='select' placeholder='Select category' name='category' )
         for category in data.categories
-          option(value=category._id) #{category.name}
+          if (guitar)
+            option(
+              value=category._id 
+              selected=(
+                category._id.toString() === guitar.category._id
+                || category._id.toString() === guitar.category
+                )? 'selected' : false
+            ) #{category.name}
+          else
+            option(value=category._id) #{category.name}
     div
       label(for='category') Producer:
-      select#producer(type='select' placeholder='Select producer' name='producer' required='true')
+      select#producer(type='select' placeholder='Select producer' name='producer')
         for producer in data.producers
-          option(value=producer._id) #{producer.name}
+          option(value=producer._id ) #{producer.name}
     button.btn.btn-primary(type='submit') Submit
 
   if errors
