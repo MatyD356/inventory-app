@@ -1,23 +1,24 @@
 extends layout
 
 block content
+  h2(class='text-4xl text-red-900') Add new guitar
   form(method='POST' action='')
-    div
-      label(for='name') Name:
-      input#name(type='text', placeholder='Name of guitar' name='name' value=(undefined===guitar ? '' : guitar.name))
-    div 
-      label(for='desc') Description:
-      input#desc(type='textarea', placeholder='description of guitar' name='desc' value=(undefined===guitar ? '' : guitar.desc))
-    div 
-      label(for='price') Price:
-      input#price(type='number', placeholder='guitar price' name='price' value=(undefined===guitar ? '' : guitar.price))
-    div
-      label(for='inStock') inStock:
-      input#inStock(type='number' placeholder='inStock number' name='inStock'  value=(undefined===guitar ? '': guitar.inStock))
+    div(class='flex flex-col my-4')
+      label(for='name' class='text-2xl my-2') Name:
+      input#name(class='p-2 rounded-md md:w-1/3 border-red-900 border-2' type='text', placeholder='Name of guitar' name='name' value=(undefined===guitar ? '' : guitar.name))
+    div(class='flex flex-col my-4')
+      label(for='desc' class='text-2xl my-2') Description:
+      input#desc(class='p-2 rounded-md md:w-1/3 border-red-900 border-2' type='textarea', placeholder='description of guitar' name='desc' value=(undefined===guitar ? '' : guitar.desc))
+    div(class='flex flex-col my-4')
+      label(for='price' class='text-2xl my-2') Price:
+      input#price(class='p-2 rounded-md md:w-1/3 border-red-900 border-2' type='number', placeholder='guitar price' name='price' value=(undefined===guitar ? '' : guitar.price))
+    div(class='flex flex-col my-4')
+      label(for='inStock' class='text-2xl my-2') inStock:
+      input#inStock(class='p-2 rounded-md md:w-1/3 border-red-900 border-2' type='number' placeholder='inStock number' name='inStock'  value=(undefined===guitar ? '': guitar.inStock))
       div.form-group
-    div
-      label(for='category') Category:
-      select#category(type='select' placeholder='Select category' name='category' )
+    div(class='flex flex-col my-4')
+      label(for='category' class='text-2xl my-2') Category:
+      select#category(class='p-2 bg-white rounded-md md:w-1/3 border-red-900 border-2' type='select' placeholder='Select category' name='category' )
         for category in data.categories
           if (guitar)
             option(
@@ -29,12 +30,12 @@ block content
             ) #{category.name}
           else
             option(value=category._id) #{category.name}
-    div
-      label(for='category') Producer:
-      select#producer(type='select' placeholder='Select producer' name='producer')
+    div(class='flex flex-col my-4')
+      label(for='category' class='text-2xl my-2') Producer:
+      select#producer(class='p-2 bg-white rounded-md md:w-1/3 border-red-900 border-2' type='select' placeholder='Select producer' name='producer')
         for producer in data.producers
           option(value=producer._id ) #{producer.name}
-    button.btn.btn-primary(type='submit') Submit
+    button(type='submit' class='my-4 p-4 bg-red-50 text-red-900 border-red-900 rounded-md border-2 hover:bg-red-600 hover:text-red-50 transform duration-500') Submit
 
   if errors
     ul
