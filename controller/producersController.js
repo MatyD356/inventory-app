@@ -23,11 +23,12 @@ exports.producer_detail = function (req, res, next) {
 }
 
 //display form to create new category on GET
-exports.category_create_get = function (req, res, next) {
+exports.producers_create_get = function (req, res, next) {
   res.render('producer_add', { title: 'Add producer' })
 }
+
 //display form to create new category on POST
-exports.category_create_post = [
+exports.producers_create_post = [
   // Validate and sanitise fields.
   body('name', 'Name must not be empty.').trim().isLength({ min: 1 }).escape(),
   body('desc', 'Description must not be empty.').trim().isLength({ min: 1 }).escape(),
@@ -36,17 +37,25 @@ exports.category_create_post = [
     // Extract the validation errors from a request.
     const errors = validationResult(req)
 
-    var category = new Category({
+    var producer = new Producer({
       name: req.body.name,
       desc: req.body.desc,
     })
     if (!errors.isEmpty()) {
-      res.render('category_add', { title: 'Category Add', errors: errors.array(), category: category })
+      res.render('producer_add', { title: 'Producer Add', errors: errors.array(), producer: producer })
     } else {
-      guitar.save(function (err) {
-        if (err) { return next(err) }
-        res.redirect(category.url)
-      })
+      Producer.findOne({ 'name': req.body.name })
+        .exec(function (err, found_producer) {
+          if (err) { return next(err) }
+          if (found_producer) {
+            res.redirect(found_producer.url)
+          } else {
+            producer.save(function (err) {
+              if (err) { return next(err) }
+              res.redirect(producer.url)
+            })
+          }
+        })
     }
   }
 ]

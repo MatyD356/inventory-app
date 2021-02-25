@@ -29,7 +29,7 @@ exports.category_details = function (req, res, next) {
 }
 
 //display form to create new category on GET
-exports.category_create_get = function (req, res, next) {
+exports.category_create_get = function (req, res) {
   res.render('category_add', { title: 'Category Add' })
 }
 //display form to create new category on POST

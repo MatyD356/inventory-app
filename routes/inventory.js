@@ -22,7 +22,8 @@ router.get('/categories/:id', categories_controller.category_details);
 
 
 router.get('/producers', producers_controller.producers);
-router.get('/producers/add', producers_controller.producers);
+router.get('/producers/add', producers_controller.producers_create_get);
+router.post('/producers/add', producers_controller.producers_create_post);
 router.get('/producers/:id', producers_controller.producer_detail);
 
 module.exports = router;
