@@ -90,15 +90,22 @@ exports.guitar_create_post = [
         }
       }, function (err, results) {
         if (err) { return next(err) }
-        console.log(errors.array());
         res.render('guitar_add', { title: 'Guitar Add', data: results, errors: errors.array(), guitar: guitar })
       })
       return;
     } else {
-      guitar.save(function (err) {
-        if (err) { return next(err) }
-        res.redirect(guitar.url)
-      })
+      Guitar.findOne({ 'name': req.body.name })
+        .exec(function (err, found_guitar) {
+          if (err) { return next(err) }
+          if (found_guitar) {
+            res.redirect(found_guitar.url)
+          } else {
+            guitar.save(function (err) {
+              if (err) { return next(err) }
+              res.redirect(guitar.url)
+            })
+          }
+        })
     }
   }
 ]

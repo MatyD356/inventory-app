@@ -16,10 +16,13 @@ router.get('/guitars/:id', guitar_controller.guitar_details);
 
 //categories routes
 router.get('/categories', categories_controller.categories);
+router.get('/categories/add', categories_controller.category_create_get);
+router.post('/categories/add', categories_controller.category_create_post);
 router.get('/categories/:id', categories_controller.category_details);
 
 
 router.get('/producers', producers_controller.producers);
+router.get('/producers/add', producers_controller.producers);
 router.get('/producers/:id', producers_controller.producer_detail);
 
 module.exports = router;
