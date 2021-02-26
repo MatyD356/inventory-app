@@ -109,3 +109,20 @@ exports.guitar_create_post = [
     }
   }
 ]
+//handle delete guitar on GET
+exports.guitar_delete_get = function (req, res, next) {
+  Guitar.findById(req.params.id)
+    .exec(function (err, found_guitar) {
+      console.log('here')
+      if (err) { return next(err) }
+      res.render('guitar_delete', { title: 'Guitar Delete', data: found_guitar })
+    })
+}
+//handle delete guitar on POST
+exports.guitar_delete_post = function (req, res, next) {
+  Guitar.findOneAndDelete(req.params.id)
+    .exec(function (err) {
+      if (err) { return next(err) }
+      res.redirect('/inventory/guitars')
+    })
+}

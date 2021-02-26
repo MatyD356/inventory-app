@@ -12,8 +12,8 @@ router.get('/guitars', guitar_controller.guitars);
 router.get('/guitars/add', guitar_controller.guitar_create_get);
 router.post('/guitars/add', guitar_controller.guitar_create_post);
 router.get('/guitars/:id', guitar_controller.guitar_details);
-
-
+router.get('/guitars/:id/delete', guitar_controller.guitar_delete_get);
+router.post('/guitars/:id/delete', guitar_controller.guitar_delete_post);
 //categories routes
 router.get('/categories', categories_controller.categories);
 router.get('/categories/add', categories_controller.category_create_get);

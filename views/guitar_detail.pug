@@ -14,7 +14,7 @@ block content
           a(href=guitar_detail.producer.url class='underline') #{guitar_detail.producer.name}
         div
           a(href='#' class='m-4 ml-0 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:text-red-50 hover:bg-red-500 transform duration-200') UPDATE
-          a(href='#' class='m-4 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:text-red-50 hover:bg-red-500 transform duration-200') DELETE 
+          a(href=guitar_detail.url+'/delete' class='m-4 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:text-red-50 hover:bg-red-500 transform duration-200') DELETE 
     div(class='p-4')
         h2(class='text-2xl text-red-900') Description: 
         p(class='text-lg text-red-600') #{guitar_detail.desc}

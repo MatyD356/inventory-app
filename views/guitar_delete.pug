@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 #{data.name}: #{data._id}
+
+  p Do you really want to delete this Guitar?
+
+  form(method='POST' action='')
+    div
+      input#guitarid(type='hidden', name='guitarid', required='true', value=data._id)
+
+    button(type='submit') Delete
