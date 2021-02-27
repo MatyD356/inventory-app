@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  div(class='mx-8 shadow-2xl rounded-md p-4 bg-white')
+    div(class='')
+      div(class='w-full m-4 mb-0')
+      if guitars.length
+        h2(class='text-2xl text-red-900') Delete following guitars before deleting this producer
+        each guitar in guitars
+          div(class='my-4')
+            a(class='border-b-2 border-red-600' href=guitar.url) #{guitar.name}
+      else
+        h2(class='text-2xl text-red-900') #{producer.name} : #{producer._id}
+        h2(class='text-2xl text-red-900 my-2') Do you really want to delete this producer?
+        form(method='POST' action='')
+          div
+            input#producerid(type='hidden', name='producerid', required='true', value=producer._id)
+          button(type='submit' class='m-4 ml-0 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:text-red-50 hover:bg-red-500 transform duration-200') Delete
+          a(href=producer.url class='m-4 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:text-red-50 hover:bg-red-500 transform duration-200') Cancel
