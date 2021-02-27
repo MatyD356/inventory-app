@@ -19,6 +19,8 @@ router.get('/categories', categories_controller.categories);
 router.get('/categories/add', categories_controller.category_create_get);
 router.post('/categories/add', categories_controller.category_create_post);
 router.get('/categories/:id', categories_controller.category_details);
+router.get('/categories/:id/delete', categories_controller.category_delete_get);
+router.post('/categories/:id/delete', categories_controller.category_delete_post);
 
 
 router.get('/producers', producers_controller.producers);

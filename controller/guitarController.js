@@ -113,7 +113,6 @@ exports.guitar_create_post = [
 exports.guitar_delete_get = function (req, res, next) {
   Guitar.findById(req.params.id)
     .exec(function (err, found_guitar) {
-      console.log('here')
       if (err) { return next(err) }
       res.render('guitar_delete', { title: 'Guitar Delete', data: found_guitar })
     })
