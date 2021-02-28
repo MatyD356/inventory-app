@@ -13,6 +13,9 @@ var inventoryRouter = require('./routes/inventory')
 
 var app = express();
 
+app.use(compression());
+app.use(helmet());
+
 //database setup
 var mongoDB = process.env.MONGO_DB_LINK
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
