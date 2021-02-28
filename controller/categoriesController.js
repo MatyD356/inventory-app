@@ -135,7 +135,7 @@ exports.category_update_post = [
   (req, res, next) => {
     const errors = validationResult(req);
 
-    var category = new Guitar({
+    var category = new Category({
       name: req.body.name,
       desc: req.body.desc,
       _id: req.params.id

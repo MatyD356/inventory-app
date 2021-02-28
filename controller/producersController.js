@@ -114,3 +114,36 @@ exports.producers_delete_post = function (req, res, next) {
     }
   })
 }
+
+//handle update producer on GET
+exports.producers_update_get = function (req, res, next) {
+  Producer.findById(req.params.id).exec(function (err, producer) {
+    if (err) { return next(err) }
+    res.render('producer_add', { producer: producer })
+  })
+}
+//handle update producer on POST
+exports.producers_update_post = [
+  body('name', 'Name must not be empty.').trim().isLength({ min: 1 }).escape(),
+  body('desc', 'Description must not be empty.').trim().isLength({ min: 1 }).escape(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+
+    var producer = new Producer({
+      name: req.body.name,
+      desc: req.body.desc,
+      _id: req.params.id
+    })
+    if (!errors.isEmpty()) {
+      res.render('producer_add', { producer: producer, errors: errors.array() })
+      return;
+    } else {
+      // Data from form is valid. Update the record.
+      Producer.findByIdAndUpdate(req.params.id, producer, {}, function (err, newProducer) {
+        if (err) { return next(err); }
+        // Successful - redirect to producer page.
+        res.redirect(newProducer.url);
+      });
+    }
+  }
+]

@@ -35,6 +35,7 @@ router.post('/producers/add', producers_controller.producers_create_post);
 router.get('/producers/:id', producers_controller.producer_detail);
 router.get('/producers/:id/delete', producers_controller.producers_delete_get);
 router.post('/producers/:id/delete', producers_controller.producers_delete_post);
-
+router.get('/producers/:id/update', producers_controller.producers_update_get);
+router.post('/producers/:id/update', producers_controller.producers_update_post);
 
 module.exports = router;
