@@ -8,7 +8,9 @@ block content
       input#name(class='p-2 rounded-md md:w-1/3 border-red-900 border-2' type='text', placeholder='Name of guitar' name='name' value=(undefined===guitar ? '' : guitar.name))
     div(class='flex flex-col my-4')
       label(for='desc' class='text-2xl my-2') Description:
-      textarea#desc(class='p-2 rounded-md md:w-1/3 border-red-900 border-2' type='textarea', placeholder='description of guitar' name='desc' value=(undefined===guitar ? '' : guitar.desc))
+      textarea#desc(class='p-2 rounded-md md:w-1/3 border-red-900 border-2' type='text', placeholder='description of guitar' name='desc')
+        if(guitar)
+         | #{guitar.desc}
     div(class='flex flex-col my-4')
       label(for='price' class='text-2xl my-2') Price:
       input#price(class='p-2 rounded-md md:w-1/3 border-red-900 border-2' type='number', placeholder='guitar price' name='price' value=(undefined===guitar ? '' : guitar.price))
@@ -23,10 +25,7 @@ block content
           if (guitar)
             option(
               value=category._id 
-              selected=(
-                category._id.toString() === guitar.category._id
-                || category._id.toString() === guitar.category
-                )? 'selected' : false
+              selected=(category.name === guitar.category.name) ? 'selected' : false
             ) #{category.name}
           else
             option(value=category._id) #{category.name}
@@ -34,7 +33,13 @@ block content
       label(for='category' class='text-2xl my-2') Producer:
       select#producer(class='p-2 bg-white rounded-md md:w-1/3 border-red-900 border-2' type='select' placeholder='Select producer' name='producer')
         for producer in data.producers
-          option(value=producer._id ) #{producer.name}
+          if (guitar)
+            option(
+              value=producer._id 
+              selected=(producer.name === guitar.producer.name) ? 'selected' : false
+            ) #{producer.name}
+          else
+            option(value=producer._id) #{producer.name}
     button(type='submit' class='my-4 p-4 bg-red-50 text-red-900 border-red-900 rounded-md border-2 hover:bg-red-600 hover:text-red-50 transform duration-500') Submit
 
   if errors

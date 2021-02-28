@@ -125,3 +125,67 @@ exports.guitar_delete_post = function (req, res, next) {
       res.redirect('/inventory/guitars')
     })
 }
+//handle update guitar on get
+exports.guitar_update_get = function (req, res, next) {
+  async.parallel({
+    guitar: function (callback) {
+      Guitar.findById(req.params.id).populate('producer').populate('category').exec(callback)
+    },
+    producers: function (callback) {
+      Producer.find(callback)
+    },
+    categories: function (callback) {
+      Category.find(callback)
+    }
+  }, function (err, results) {
+    if (err) { return next(err) }
+    res.render('guitar_add', { title: 'Guitar Add', data: results, guitar: results.guitar })
+  })
+}
+//handle update guitar on post
+exports.guitar_update_post = [
+  // Validate and sanitise fields.
+  body('name', 'Name must not be empty.').trim().isLength({ min: 1 }).escape(),
+  body('desc', 'Description must not be empty.').trim().isLength({ min: 1 }).escape(),
+  body('price', 'Price must not be empty.').trim().isLength({ min: 1 }).escape().toInt(),
+  body('inStock', 'inStock must not be empty.').trim().isLength({ min: 1 }).escape().toInt(),
+  body('category', 'category must not be empty.').escape(),
+  body('producer', 'producer must not be empty.').escape(),
+  // Process request after validation and sanitization.
+  (req, res, next) => {
+
+    // Extract the validation errors from a request.
+    const errors = validationResult(req);
+
+    var guitar = new Guitar({
+      name: req.body.name,
+      desc: req.body.desc,
+      price: req.body.price,
+      inStock: req.body.inStock,
+      category: req.body.category,
+      producer: req.body.producer,
+      _id: req.params.id
+    })
+    if (!errors.isEmpty()) {
+      async.parallel({
+        producers: function (callback) {
+          Producer.find(callback)
+        },
+        categories: function (callback) {
+          Category.find(callback)
+        }
+      }, function (err, results) {
+        if (err) { return next(err) }
+        res.render('guitar_add', { title: 'Guitar Add', data: results, errors: errors.array(), guitar: guitar })
+      })
+      return;
+    } else {
+      // Data from form is valid. Update the record.
+      Guitar.findByIdAndUpdate(req.params.id, guitar, {}, function (err, newGuitar) {
+        if (err) { return next(err); }
+        // Successful - redirect to guitar page.
+        res.redirect(newGuitar.url);
+      });
+    }
+  }
+]
