@@ -120,3 +120,36 @@ exports.category_delete_post = function (req, res, next) {
     }
   })
 }
+
+//handle update category on GET
+exports.category_update_get = function (req, res, next) {
+  Category.findById(req.params.id).exec(function (err, category) {
+    if (err) { return next(err) }
+    res.render('category_add', { category: category })
+  })
+}
+//handle update category on POST
+exports.category_update_post = [
+  body('name', 'Name must not be empty.').trim().isLength({ min: 1 }).escape(),
+  body('desc', 'Description must not be empty.').trim().isLength({ min: 1 }).escape(),
+  (req, res, next) => {
+    const errors = validationResult(req);
+
+    var category = new Guitar({
+      name: req.body.name,
+      desc: req.body.desc,
+      _id: req.params.id
+    })
+    if (!errors.isEmpty()) {
+      res.render('category_add', { category: category, errors: errors.array() })
+      return;
+    } else {
+      // Data from form is valid. Update the record.
+      Category.findByIdAndUpdate(req.params.id, category, {}, function (err, newCategory) {
+        if (err) { return next(err); }
+        // Successful - redirect to guitar page.
+        res.redirect(newCategory.url);
+      });
+    }
+  }
+]

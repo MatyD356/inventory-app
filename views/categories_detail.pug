@@ -6,5 +6,5 @@ block content
         h2(class='text-2xl text-red-900') #{data.name}
         p #{data.desc}
         div
-          a(href='#' class='m-4 ml-0 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:text-red-50 hover:bg-red-500 transform duration-200') UPDATE
+          a(href=data.url+'/update' class='m-4 ml-0 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:text-red-50 hover:bg-red-500 transform duration-200') UPDATE
           a(href=data.url+'/delete' class='m-4 inline-block p-2 border-solid border-2 border-red-900 rounded-md hover:text-red-50 hover:bg-red-500 transform duration-200') DELETE 

@@ -25,6 +25,8 @@ router.post('/categories/add', categories_controller.category_create_post);
 router.get('/categories/:id', categories_controller.category_details);
 router.get('/categories/:id/delete', categories_controller.category_delete_get);
 router.post('/categories/:id/delete', categories_controller.category_delete_post);
+router.get('/categories/:id/update', categories_controller.category_update_get);
+router.post('/categories/:id/update', categories_controller.category_update_post);
 
 //producers routes
 router.get('/producers', producers_controller.producers);
